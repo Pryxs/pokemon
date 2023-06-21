@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react'
 import PokemonService from "./services/pokemon.service"
 import Card from './components/Card'
 import Pagination from './components/Pagination'
-import getColorFromType from './getColorFromType'
+import getColorFromType from './helpers/getColorFromType'
 
 export default function App() {
   const [pokemons, setPokemons] = useState([]);
-  const [page, setPage] = useState(7);
+  const [page, setPage] = useState(1);
   const [startIndex, setStartIndex] = useState(0);
 
   const elementPerPage = 12;
@@ -15,13 +15,7 @@ export default function App() {
     fetchData();
   }, []);
 
-  const generateDataUrl = () => {
-    const url = []
-    for (let i = 1; i <= 151; i++) {
-      url.push(`https://pokeapi.co/api/v2/pokemon/${i}/`);
-    }
-    return url;
-  }
+  const generateDataUrl = () => Array.from({ length: 151 }, (v, k) => `https://pokeapi.co/api/v2/pokemon/${k + 1}/`)
 
   const changePage = page => {
     setPage(page)
