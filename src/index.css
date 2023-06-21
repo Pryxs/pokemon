@@ -64,3 +64,9 @@ button{
     border-radius: 2px;
     color: blue
 }
+
+button:disabled{
+    background-color: gainsboro;
+    opacity: .7;
+    cursor: not-allowed;
+}

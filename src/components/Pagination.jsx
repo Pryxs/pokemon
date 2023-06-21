@@ -1,4 +1,6 @@
-const Pagination = ({ changePage, page, elementPerPage, startIndex, length }) => {
+import Link from "./Link";
+
+const Pagination = ({ changePage, page, elementPerPage, length }) => {
     const maxPage = Math.ceil(length / elementPerPage)
     return (
         <div className="pagination">
@@ -8,10 +10,10 @@ const Pagination = ({ changePage, page, elementPerPage, startIndex, length }) =>
             >
                 &#60;
             </button>
-            <span className="link" onClick={() => changePage(1)}>1</span>
+            <Link changePage={changePage} pageTarget={1} />
             <span>...</span>
-            {page > 2 && <span className="link" onClick={() => changePage(page - 2)}>{page - 2}</span>}
-            {page > 1 && <span className="link" onClick={() => changePage(page - 1)}>{page - 1}</span>}
+            {page > 3 && <Link changePage={changePage} pageTarget={page - 2} />}
+            {page > 2 && <Link changePage={changePage} pageTarget={page - 1} />}
 
             <input
                 type="number"
@@ -21,11 +23,11 @@ const Pagination = ({ changePage, page, elementPerPage, startIndex, length }) =>
                 onChange={(e) => changePage(parseInt(e.target.value))}
             />
 
-            {page < maxPage - 1 && <span className="link" onClick={() => changePage(page + 1)}>{page + 1}</span>}
-            {page < maxPage - 2 && <span className="link" onClick={() => changePage(page + 2)}>{page + 2}</span>}
+            {page < maxPage - 1 && <Link changePage={changePage} pageTarget={page + 1} />}
+            {page < maxPage - 2 && <Link changePage={changePage} pageTarget={page + 2} />}
 
             <span>...</span>
-            <span className="link" onClick={() => changePage(maxPage)}>{maxPage}</span>
+            <Link changePage={changePage} pageTarget={maxPage} />
             <button
                 disabled={page >= maxPage ? true : false}
                 onClick={() => changePage(page + 1)}

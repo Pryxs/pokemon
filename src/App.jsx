@@ -88,7 +88,6 @@ export default function App() {
         changePage={changePage}
         page={page}
         elementPerPage={elementPerPage}
-        startIndex={startIndex}
         length={pokemons.length}
       />
 
