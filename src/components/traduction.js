@@ -24,3 +24,4 @@ const translateNames = async (pokemonList) => {
     setPokemons(translatedPokemonList);
 };
 
+export default translateNames;
