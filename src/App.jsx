@@ -9,7 +9,7 @@ export default function App() {
   const [page, setPage] = useState(1);
   const [startIndex, setStartIndex] = useState(0);
 
-  const elementPerPage = 10;
+  const elementPerPage = 12;
 
   useEffect(() => {
     fetchData();
@@ -24,7 +24,7 @@ export default function App() {
   }
 
   const changePage = page => {
-    console.log(typeof(page))
+    console.log(typeof (page))
     setPage(page)
     setStartIndex((page - 1) * elementPerPage)
   }
@@ -34,7 +34,7 @@ export default function App() {
     for (let i = startIndex; i < startIndex + elementPerPage; i++) {
       if (pokemons[i]) {
         selected.push(
-          <Card 
+          <Card
             key={i}
             name={pokemons[i].name}
             image={pokemons[i].sprites.back_default}
@@ -84,11 +84,6 @@ export default function App() {
 
   return (
     <div>
-      <h1>Pokemons</h1>
-      <div className="grid">
-        {pokemons && renderList()}
-      </div>
-
       <Pagination
         changePage={changePage}
         page={page}
@@ -96,6 +91,10 @@ export default function App() {
         startIndex={startIndex}
         length={pokemons.length}
       />
+
+      <div className="grid">
+        {pokemons && renderList()}
+      </div>
     </div>
   )
 }
