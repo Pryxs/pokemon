@@ -16,9 +16,9 @@ const Pagination = ({ changePage, currentPage, elementPerPage, length }) => {
         <div className="pagination">
             <Link disabled={currentPage === 1 ? true : false} changePage={changePage} pageTarget={currentPage - 1} text={'<'} />
 
-            {pageList && pageList.map((page) => {
-                if (typeof (page) === 'string') return < span > {page}</span>
-                return <Link key={page.toString()} changePage={changePage} pageTarget={page} text={page} />
+            {pageList && pageList.map((page, index) => {
+                if (typeof (page) === 'string') return <span key={index}> {page}</span>
+                return <Link key={index} changePage={changePage} pageTarget={page} text={page} />
             })}
 
             <Link disabled={currentPage === maxPage ? true : false} changePage={changePage} pageTarget={currentPage + 1} text={'>'} />
